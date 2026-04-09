@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Конвертер валют</title>
+  <link rel="stylesheet" href="/src/style.css">
+
+</head>
+
+<body>
+  <div class="container">
+    <div class="update">
+      Курсы обновлены: <span id="last-updated">📅📅</span>
+    </div>
+    <h1>Конвертер валют</h1>
+    <script type="module" src="/src/main.js"></script>
+    <div class="first">
+
+    </div>
+
+    <div class="first">
+      <div class="card">
+        <div class="currency-row">
+          <div class="currency-box">
+            <h2>Из валюты:</h2>
+            <select>
+              <option>Рубль</option>
+              <option>Доллар</option>
+              <option>Евро</option>
+              <option>Теньге</option>
+              <option>Гривны</option>
+            </select>
+          </div>
+          <div class="currency-box">
+            <h2>В валюту:</h2>
+            <select>
+              <option>Рубль</option>
+              <option>Доллар</option>
+              <option>Евро</option>
+              <option>Теньге</option>
+              <option>Гривны</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <button id="convert-btn">🔄 Конвертировать</button>
+
+      <div class="result">
+        <span>Результат:</span>
+        <p class="res">100рубчей</p>
+      </div>
+
+      <div class="history">
+        <h3>История Операций</h3>
+        <div class="history_list">
+          -
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
