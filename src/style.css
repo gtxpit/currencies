@@ -1,6 +1,7 @@
+
 body {
   background: radial-gradient(#1e293b, #0f172a);
-  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  font-family: Comic Sans MS, Comic Sans, cursive;
 }
 
 h1 {
@@ -42,6 +43,8 @@ select {
 
 option {
   border-radius: 5px;
+  font-family: Comic Sans MS, Comic Sans, cursive;
+  ;
 }
 
 .card {
@@ -62,11 +65,13 @@ option {
 .currency-box h2 {
   font-size: 16px;
   margin-bottom: 8px;
+  font-family: Comic Sans MS, Comic Sans, cursive;
+  ;
 }
 
 .result {
   margin-top: 10px;
-  background: #b2aa8c;
+  background: #4facfe;
   border-radius: 10px;
   padding: 15px;
   border: 1px solid rgba(255, 255, 255, 0.5);
@@ -76,7 +81,7 @@ option {
 
 .res {
   font-size: 30px;
-  color: rgb(85, 93, 114);
+  color: bisque;
 }
 
 .update {
@@ -86,6 +91,7 @@ option {
 .sum {
   border-radius: 5px;
   padding: 8px;
+  font-family: Comic Sans MS, Comic Sans, cursive;
 }
 
 button:hover {
@@ -120,6 +126,6 @@ button:hover {
 }
 
 .history {
-  width:500px;
+  width: 500px;
   margin-left: 50px;
 }
