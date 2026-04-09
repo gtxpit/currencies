@@ -3,25 +3,28 @@
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Конвертер валют</title>
   <link rel="stylesheet" href="/src/style.css">
+  <script type="module" src="/src/main.js"></script>
 
 </head>
 
 <body>
   <div class="container">
-    <div class="update">
-      Курсы обновлены: <span id="last-updated">📅📅</span>
+    <div class="header">
+      <h1>Конвертер валют</h1>
+      <div class="update">
+        Курсы обновлены: <span id="last-updated">📅date📅</span>
+      </div>
     </div>
-    <h1>Конвертер валют</h1>
-    <script type="module" src="/src/main.js"></script>
     <div class="first">
-
     </div>
-
     <div class="first">
+      <div class="summa">
+        <span>💵Сумма:</span>
+        <input type="" class="sum">
+      </div>
       <div class="card">
         <div class="currency-row">
           <div class="currency-box">
@@ -53,10 +56,12 @@
         <p class="res">100рубчей</p>
       </div>
 
+<div class="black-line"></div>
+
       <div class="history">
         <h3>История Операций</h3>
         <div class="history_list">
-          -
+          ==
         </div>
       </div>
     </div>
