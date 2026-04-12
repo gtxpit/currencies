@@ -1,7 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+html {
+  zoom: 1.25;
+}
 
 body {
-  background: radial-gradient(#1e293b, #0f172a);
-  font-family: Comic Sans MS, Comic Sans, cursive;
+  background: #2B2D42;
+  font-family: 'Poppins', sans-serif;
+
 }
 
 h1 {
@@ -28,7 +34,7 @@ button {
 }
 
 .container {
-  background: #fff8dc;
+  background: #ebd57e;
   max-width: 500px;
   margin: 50px auto;
   padding: 30px;
@@ -43,8 +49,7 @@ select {
 
 option {
   border-radius: 5px;
-  font-family: Comic Sans MS, Comic Sans, cursive;
-  ;
+  font-family: 'Poppins', sans-serif;
 }
 
 .card {
@@ -65,8 +70,7 @@ option {
 .currency-box h2 {
   font-size: 16px;
   margin-bottom: 8px;
-  font-family: Comic Sans MS, Comic Sans, cursive;
-  ;
+  font-family: 'Poppins', sans-serif;
 }
 
 .result {
@@ -91,7 +95,8 @@ option {
 .sum {
   border-radius: 5px;
   padding: 8px;
-  font-family: Comic Sans MS, Comic Sans, cursive;
+   font-family: 'Poppins', sans-serif;
+
 }
 
 button:hover {
