@@ -33,3 +33,22 @@ function updateTime() {
 updateTime()
 
 setInterval(updateTime, 1000)
+
+sumInput.addEventListener('keypress', function (event) {
+    if (event.key === 'Enter') {
+        const btn = document.querySelector('#convert-btn');
+        btn.click();
+    }
+});
+
+fetch('https://www.cbr-xml-daily.ru/daily_json.js')
+    .then(response => response.json())
+    .then(data => {
+        const usd = data.Valute.USD.value
+        const eur = data.Valute.EUR.value
+        console.log('USD:', usd)
+        console.log('EUR:', eur)
+    })
+    .catch(error => {
+        console.error('Ошибка:',error)
+    })
