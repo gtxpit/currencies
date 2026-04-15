@@ -1,54 +1,87 @@
-// const Tests = document.querySelector('.res')
-// Tests.innerHTML = 'test' изменение через константу
-// document.querySelector('.res').innerHTML = "тридцать четыре" - изменение на прямую
-// Находим кнопку, поле ввода и блок для истории
-const btn = document.querySelector('#convert-btn')
-const sumInput = document.querySelector('.sum')
-const historyList = document.querySelector('.history_list')
+// Находим элементы
+const btn = document.querySelector('#convert-btn');
+const sumInput = document.querySelector('.sum');
+const historyList = document.querySelector('.history_list');
+const resultDiv = document.querySelector('.res');
+const updateSpan = document.getElementById('last-updated');
+const divUpdate = document.querySelector('.update');
 
+// Переменная для курсов
+let currencyRates = {};
 
+// Загрузка курсов 
+function loadRates() {
+    fetch('https://www.cbr-xml-daily.ru/daily_json.js')
+        .then(response => response.json())
+        .then(data => {
+            currencyRates = {
+                RUB: 1,
+                USD: data.Valute.USD.Value,
+                EUR: data.Valute.EUR.Value,
+                KZT: data.Valute.KZT.Value,
+                UAH: data.Valute.UAH.Value
+            };
+            updateSpan.textContent = new Date().toLocaleString();
+            console.log('Курсы загружены:', currencyRates);
+        })
+        .catch(error => {
+            console.error('Ошибка:', error);
+            alert('Не удалось загрузить курсы');
+        });
+}
 
-btn.addEventListener('click', function () {
-    const sum = sumInput.value
-    if (sum === '') {
-        return
-    }
-    const newRecord = document.createElement('div')
-    newRecord.textContent = sum
-    historyList.prepend(newRecord)
-    sumInput.value = ''
+// функция конвертации 
+function convertCurrency() {
+    const amount = parseFloat(sumInput.value);
+    const fromCode = document.querySelectorAll('.currency-box select')[0].value;
+    const toCode = document.querySelectorAll('.currency-box select')[1].value;
+    const fromRate = currencyRates[fromCode];
+    const toRate = currencyRates[toCode];
+    const result = amount * (fromRate / toRate);
+    
+    // Выводим результат
+    resultDiv.textContent = result.toFixed(2) + ' ' + toCode;
+    const newRecord = document.createElement('div');
+    newRecord.className = 'history-item';
+    newRecord.textContent = `${amount} ${fromCode} → ${result.toFixed(2)} ${toCode}`;
+    historyList.prepend(newRecord);
     if (historyList.children.length > 10) {
         historyList.lastElementChild.remove();
     }
-});
-
-
-
-
-const divUpdate = document.querySelector('.update')
-function updateTime() {
-    const now = new Date()
-    divUpdate.textContent = "Сегодня " + now.toLocaleString()
+    //история
+    localStorage.setItem('history', JSON.stringify(historyList.innerHTML));
 }
-updateTime()
 
-setInterval(updateTime, 1000)
+// ЗАГРУЗКА ИСТОРИИ
+function loadHistory() {
+    const savedHistory = localStorage.getItem('history');
+    if (savedHistory) {
+        historyList.innerHTML = JSON.parse(savedHistory);
+    }
+}
 
+//загрузка
+loadRates();
+loadHistory();
+
+
+
+// Часы
+function updateTime() {
+    divUpdate.textContent = "Сегодня " + new Date().toLocaleString();
+}
+updateTime();
+setInterval(updateTime, 1000);
+
+// вешаем конвертацию на кнопку
+btn.addEventListener('click', convertCurrency);
+
+// при нажатаии на enter кнопка срабатывает(для удобства)
 sumInput.addEventListener('keypress', function (event) {
     if (event.key === 'Enter') {
-        const btn = document.querySelector('#convert-btn');
         btn.click();
     }
 });
 
-fetch('https://www.cbr-xml-daily.ru/daily_json.js')
-    .then(response => response.json())
-    .then(data => {
-        const usd = data.Valute.USD.value
-        const eur = data.Valute.EUR.value
-        console.log('USD:', usd)
-        console.log('EUR:', eur)
-    })
-    .catch(error => {
-        console.error('Ошибка:',error)
-    })
+// загружаем курсы при старте
+loadRates();
