@@ -16,10 +16,10 @@ function loadRates() {
         .then(data => {
             currencyRates = {
                 RUB: 1,
-                USD: data.Valute.USD.Value,
-                EUR: data.Valute.EUR.Value,
-                KZT: data.Valute.KZT.Value,
-                UAH: data.Valute.UAH.Value
+                USD: data.Valute.USD.Value / data.Valute.USD.Nominal,
+                EUR: data.Valute.EUR.Value / data.Valute.EUR.Nominal,
+                KZT: data.Valute.KZT.Value / data.Valute.KZT.Nominal,
+                UAH: data.Valute.UAH.Value / data.Valute.UAH.Nominal
             };
             updateSpan.textContent = new Date().toLocaleString();
             console.log('Курсы загружены:', currencyRates);
@@ -38,7 +38,7 @@ function convertCurrency() {
     const fromRate = currencyRates[fromCode];
     const toRate = currencyRates[toCode];
     const result = amount * (fromRate / toRate);
-    
+
     // Выводим результат
     resultDiv.textContent = result.toFixed(2) + ' ' + toCode;
     const newRecord = document.createElement('div');
