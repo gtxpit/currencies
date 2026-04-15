@@ -89,3 +89,12 @@ sumInput.addEventListener('keypress', function (event) {
 
 // загружаем курсы при старте
 loadRates();
+
+
+//очистка истории с помощью кнопки 
+const clearBtn = document.querySelector('#clear-btn');
+clearBtn.addEventListener('click', () => {
+    historyList.innerHTML = '';           
+    localStorage.removeItem('history');  
+    alert('История очищена!');
+});
