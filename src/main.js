@@ -21,80 +21,78 @@ function loadRates() {
                 KZT: data.Valute.KZT.Value / data.Valute.KZT.Nominal,
                 UAH: data.Valute.UAH.Value / data.Valute.UAH.Nominal
             };
-            updateSpan.textContent = new Date().toLocaleString();
-            console.log('Курсы загружены:', currencyRates);
+            
+            const ratesDate = new Date(data.Timestamp);
+            updateSpan.innerHTML = `📅 Курс на дату: ${data.Date.split('T')[0]}<br>
+                                    🕒 Официальный курс ЦБ РФ от: ${ratesDate.toLocaleString()}`
+            
+            console.log('Курсы загружены:', currencyRates)
         })
         .catch(error => {
-            console.error('Ошибка:', error);
-            alert('Не удалось загрузить курсы');
+            console.error('Ошибка:', error)
+            alert('Не удалось загрузить курсы')
         });
 }
 
-// функция конвертации 
+// Функция конвертации 
 function convertCurrency() {
-    const amount = parseFloat(sumInput.value);
-    const fromCode = document.querySelectorAll('.currency-box select')[0].value;
-    const toCode = document.querySelectorAll('.currency-box select')[1].value;
-    const fromRate = currencyRates[fromCode];
-    const toRate = currencyRates[toCode];
-    const result = amount * (fromRate / toRate);
+    const amount = parseFloat(sumInput.value)
+    const fromCode = document.querySelectorAll('.currency-box select')[0].value
+    const toCode = document.querySelectorAll('.currency-box select')[1].value
+    const fromRate = currencyRates[fromCode]
+    const toRate = currencyRates[toCode]
+    const result = amount * (fromRate / toRate)
+    
     if (isNaN(amount) || amount === '') {
-        resultDiv.textContent = 'Введите сумму';
+        resultDiv.textContent = 'Введите сумму'
         return;
     }
 
     // Выводим результат
-    resultDiv.textContent = result.toFixed(2) + ' ' + toCode;
-    const newRecord = document.createElement('div');
-    newRecord.className = 'history-item';
-    newRecord.textContent = `${amount} ${fromCode} → ${result.toFixed(2)} ${toCode}`;
-    historyList.prepend(newRecord);
+    resultDiv.textContent = result.toFixed(2) + ' ' + toCode
+    
+    // Добавляем в историю
+    const newRecord = document.createElement('div')
+    newRecord.className = 'history-item'
+    newRecord.textContent = `${amount} ${fromCode} → ${result.toFixed(2)} ${toCode}`
+    historyList.prepend(newRecord)
+    
     if (historyList.children.length > 10) {
-        historyList.lastElementChild.remove();
+        historyList.lastElementChild.remove()
     }
-    //история
-    localStorage.setItem('history', JSON.stringify(historyList.innerHTML));
+    
+    // Сохраняем историю
+    localStorage.setItem('history', JSON.stringify(historyList.innerHTML))
 }
 
-// ЗАГРУЗКА ИСТОРИИ
+// Загрузка истории
 function loadHistory() {
-    const savedHistory = localStorage.getItem('history');
+    const savedHistory = localStorage.getItem('history')
     if (savedHistory) {
-        historyList.innerHTML = JSON.parse(savedHistory);
+        historyList.innerHTML = JSON.parse(savedHistory)
     }
 }
 
-//загрузка
-loadRates();
-loadHistory();
-
-
-
-// Часы
-function updateTime() {
-    divUpdate.textContent = "Сегодня " + new Date().toLocaleString();
+// Очистка истории
+const clearBtn = document.querySelector('#clear-btn')
+if (clearBtn) {
+    clearBtn.addEventListener('click', () => {
+        historyList.innerHTML = ''         
+        localStorage.removeItem('history')
+        alert('История очищена!')
+    });
 }
-updateTime();
-setInterval(updateTime, 1000);
 
-// вешаем конвертацию на кнопку
-btn.addEventListener('click', convertCurrency);
+// Вешаем конвертацию на кнопку
+btn.addEventListener('click', convertCurrency)
 
-// при нажатаии на enter кнопка срабатывает(для удобства)
-sumInput.addEventListener('keypress', function (event) {
+// Enter на поле ввода
+sumInput.addEventListener('keypress', function(event) {
     if (event.key === 'Enter') {
-        btn.click();
+        btn.click()
     }
 });
 
-// загружаем курсы при старте
-loadRates();
-
-
-//очистка истории с помощью кнопки 
-const clearBtn = document.querySelector('#clear-btn');
-clearBtn.addEventListener('click', () => {
-    historyList.innerHTML = '';           
-    localStorage.removeItem('history');  
-    alert('История очищена!');
-});
+// Загружаем курсы и историю при старте
+loadRates()
+loadHistory()
