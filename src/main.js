@@ -38,6 +38,10 @@ function convertCurrency() {
     const fromRate = currencyRates[fromCode];
     const toRate = currencyRates[toCode];
     const result = amount * (fromRate / toRate);
+    if (isNaN(amount) || amount === '') {
+        resultDiv.textContent = 'Введите сумму';
+        return;
+    }
 
     // Выводим результат
     resultDiv.textContent = result.toFixed(2) + ' ' + toCode;
