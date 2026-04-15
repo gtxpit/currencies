@@ -178,8 +178,4 @@ button:hover {
     display: flex;
     flex-direction: column;
   }
-
-  input, select,button {
-    font-size: 16px;
-  }
 }
