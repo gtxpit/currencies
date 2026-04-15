@@ -127,6 +127,7 @@ button:hover {
   width: 100%;
   border-bottom: 2px solid black;
 }
+
 .history {
   width: 500px;
   margin-left: 50px;
@@ -135,4 +136,27 @@ button:hover {
 
 .clearButton {
   margin-left: 320px;
+}
+
+@media(max-width:480px) {
+  .summa {
+    margin-left: 30px;
+  }
+
+  .history {
+    max-width: 400px;
+  }
+
+  h3 {
+    margin-left: 90px;
+  }
+
+  .history-item {
+    max-width: 350px;
+    margin-left: 60px;
+  }
+
+  .clearButton {
+    margin-left: 70px;
+  }
 }
