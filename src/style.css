@@ -166,6 +166,7 @@ button:hover {
   }
 
   .clearButton {
+   align-content: center;
     margin-left: 70px;
   }
 
@@ -178,4 +179,5 @@ button:hover {
     display: flex;
     flex-direction: column;
   }
+
 }

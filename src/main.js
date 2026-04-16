@@ -78,7 +78,7 @@ const clearBtn = document.querySelector('#clear-btn')
 if (clearBtn) {
     clearBtn.addEventListener('click', () => {
         historyList.innerHTML = ''         
-        localStorage.removeItem('history')
+        localStorage.clear('history')
         alert('История очищена!')
     });
 }
