@@ -144,6 +144,12 @@ button:hover {
 }
 
 @media(max-width:480px) {
+  .html {
+    zoom: 1;
+  }
+  .container {
+    margin-left: 10px;
+  }
   h1 {
     white-space: nowrap;
   }

@@ -21,11 +21,11 @@ function loadRates() {
                 KZT: data.Valute.KZT.Value / data.Valute.KZT.Nominal,
                 UAH: data.Valute.UAH.Value / data.Valute.UAH.Nominal
             };
-            
+
             const ratesDate = new Date(data.Timestamp);
             updateSpan.innerHTML = `📅 Курс на дату: ${data.Date.split('T')[0]}<br>
                                     🕒 Официальный курс ЦБ РФ от: ${ratesDate.toLocaleString()}`
-            
+
             console.log('Курсы загружены:', currencyRates)
         })
         .catch(error => {
@@ -42,7 +42,7 @@ function convertCurrency() {
     const fromRate = currencyRates[fromCode]
     const toRate = currencyRates[toCode]
     const result = amount * (fromRate / toRate)
-    
+
     if (isNaN(amount) || amount === '') {
         resultDiv.textContent = 'Введите сумму'
         return;
@@ -50,26 +50,26 @@ function convertCurrency() {
 
     // Выводим результат
     resultDiv.textContent = result.toFixed(2) + ' ' + toCode
-    
+
     // Добавляем в историю
     const newRecord = document.createElement('div')
     newRecord.className = 'history-item'
     newRecord.textContent = `${amount} ${fromCode} → ${result.toFixed(2)} ${toCode}`
     historyList.prepend(newRecord)
-    
+
     if (historyList.children.length > 10) {
         historyList.lastElementChild.remove()
     }
-    
+
     // Сохраняем историю
-    localStorage.setItem('history', JSON.stringify(historyList.innerHTML))
+    localStorage.setItem('history', JSON.stringify(historyList.innerHTML))//JSON.stringify нужен чтоб превратить обьект в строчку,потому что localstorage умеет работать только со строками
 }
 
 // Загрузка истории
 function loadHistory() {
     const savedHistory = localStorage.getItem('history')
     if (savedHistory) {
-        historyList.innerHTML = JSON.parse(savedHistory)
+        historyList.innerHTML = JSON.parse(savedHistory)//
     }
 }
 
@@ -77,7 +77,7 @@ function loadHistory() {
 const clearBtn = document.querySelector('#clear-btn')
 if (clearBtn) {
     clearBtn.addEventListener('click', () => {
-        historyList.innerHTML = ''         
+        historyList.innerHTML = ''
         localStorage.clear('history')
         alert('История очищена!')
     });
@@ -87,7 +87,7 @@ if (clearBtn) {
 btn.addEventListener('click', convertCurrency)
 
 // Enter на поле ввода
-sumInput.addEventListener('keypress', function(event) {
+sumInput.addEventListener('keypress', function (event) {
     if (event.key === 'Enter') {
         btn.click()
     }
