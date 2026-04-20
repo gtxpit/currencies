@@ -147,9 +147,11 @@ button:hover {
   .html {
     zoom: 1;
   }
+
   .container {
     margin-left: 10px;
   }
+
   h1 {
     white-space: nowrap;
   }
@@ -172,7 +174,7 @@ button:hover {
   }
 
   .clearButton {
-   align-content: center;
+    align-content: center;
     margin-left: 70px;
   }
 
@@ -186,4 +188,9 @@ button:hover {
     flex-direction: column;
   }
 
+  input,
+  select,
+  button {
+    font-size: 16px;
+  }
 }
