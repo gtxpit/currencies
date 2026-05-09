@@ -11,8 +11,8 @@
 - Адаптив (телефоны)
 - Enter на поле ввода
 
-Деплой
+# Деплой
 https://gtxpit.github.io/currencies
 
-Технологии
+# Технологии
 HTML / CSS / JS / Vite / Fetch API / localStorage
