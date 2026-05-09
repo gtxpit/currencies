@@ -1,29 +1,31 @@
+/* шрифт */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-
-
+/* глобальные стили */
 body {
   background: #2B2D42;
   font-family: 'Poppins', sans-serif;
-
 }
+
 
 h1 {
   text-align: center;
   margin-top: 50px;
   white-space: nowrap;
-
+  /* запрещает перенос на новую строку */
+  border: 2px solid;
+  padding: 5px;
 }
 
+/* основной блок с контентом*/
 .first {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  border-radius: 5px;
-
 }
 
+/* кнопки */
 button {
   margin-top: 20px;
   padding: 12px 24px;
@@ -34,14 +36,24 @@ button {
   cursor: pointer;
 }
 
+/* ховер на кнопки */
+button:hover {
+  background: #3d8fd9;
+  transform: scale(1.02);
+  transition: 0.3s;
+}
+
+/* основной блок */
 .container {
   background: #ebd57e;
   max-width: 500px;
   margin: 50px auto;
   padding: 30px;
   border-radius: 24px;
+  
 }
 
+/* выпадающие списки */
 select {
   border-radius: 5px;
   width: 100px;
@@ -53,6 +65,7 @@ option {
   font-family: 'Poppins', sans-serif;
 }
 
+/* блок с двумя селектами (рядом) */
 .card {
   width: 100%;
 }
@@ -74,6 +87,7 @@ option {
   font-family: 'Poppins', sans-serif;
 }
 
+/* результат конвертации */
 .result {
   margin-top: 10px;
   background: #4facfe;
@@ -89,24 +103,22 @@ option {
   color: bisque;
 }
 
+/* дата обновления курсов */
 .update {
   align-items: end;
   margin-left: 20px;
+  font-size: 14px;
+  white-space: nowrap;
 }
 
+/* поле ввода суммы */
 .sum {
   border-radius: 5px;
   padding: 8px;
   font-family: 'Poppins', sans-serif;
-
 }
 
-button:hover {
-  background: #3d8fd9;
-  transform: scale(1.02);
-  transition: 0.3s;
-}
-
+/* заголовок и дата */
 .header {
   display: flex;
   justify-content: space-between;
@@ -121,29 +133,20 @@ button:hover {
   font-size: 30px;
 }
 
-.update {
-  font-size: 14px;
-  white-space: nowrap;
-}
 
-.black-line {
-  margin-top: 15px;
-  color: black;
-  width: 100%;
-  border-bottom: 2px solid black;
-}
-
+/* блок с историей */
 .history {
   width: 500px;
   margin-left: 50px;
 }
 
-
+/* кнопка очистки истории */
 .clearButton {
   margin-left: 320px;
 }
 
-@media(max-width:480px) {
+/* адаптив */
+@media (max-width: 480px) {
   .html {
     zoom: 1;
   }
@@ -188,6 +191,7 @@ button:hover {
     flex-direction: column;
   }
 
+  /* запрещаем автоматический зум на телефонах(была проблема,когда на телефоне вводишь значение,был вонючий зум,вроде пофиксил) */
   input,
   select,
   button {

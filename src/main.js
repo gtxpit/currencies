@@ -1,4 +1,4 @@
-// Находим элементы
+// сохраняю элементы в переменные
 const btn = document.querySelector('#convert-btn');
 const sumInput = document.querySelector('.sum');
 const historyList = document.querySelector('.history_list');
@@ -6,10 +6,10 @@ const resultDiv = document.querySelector('.res');
 const updateSpan = document.getElementById('last-updated');
 const divUpdate = document.querySelector('.update');
 
-// Переменная для курсов
+// переменная для курсов
 let currencyRates = {};
 
-// Загрузка курсов 
+// загрузка курсов 
 function loadRates() {
     fetch('https://www.cbr-xml-daily.ru/daily_json.js')
         .then(response => response.json())
@@ -23,8 +23,8 @@ function loadRates() {
             };
 
             const ratesDate = new Date(data.Timestamp);
-            updateSpan.innerHTML = `📅 Курс на дату: ${data.Date.split('T')[0]}<br>
-                                    🕒 Официальный курс ЦБ РФ от: ${ratesDate.toLocaleString()}`
+            updateSpan.innerHTML = `🗓 Курс на дату: ${data.Date.split('T')[0]}<br>
+                                    ⏱ Официальный курс ЦБ РФ от: ${ratesDate.toLocaleString()}`
 
             console.log('Курсы загружены:', currencyRates)
         })
@@ -34,7 +34,7 @@ function loadRates() {
         });
 }
 
-// Функция конвертации 
+// функция конвертации 
 function convertCurrency() {
     const amount = parseFloat(sumInput.value)
     const fromCode = document.querySelectorAll('.currency-box select')[0].value
@@ -48,10 +48,10 @@ function convertCurrency() {
         return;
     }
 
-    // Выводим результат
+    // выводим результат
     resultDiv.textContent = result.toFixed(2) + ' ' + toCode
 
-    // Добавляем в историю
+    // добавляем в историю
     const newRecord = document.createElement('div')
     newRecord.className = 'history-item'
     newRecord.textContent = `${amount} ${fromCode} → ${result.toFixed(2)} ${toCode}`
@@ -61,11 +61,11 @@ function convertCurrency() {
         historyList.lastElementChild.remove()
     }
 
-    // Сохраняем историю
+    // сохраняем историю
     localStorage.setItem('history', JSON.stringify(historyList.innerHTML))//JSON.stringify нужен чтоб превратить обьект в строчку,потому что localstorage умеет работать только со строками
 }
 
-// Загрузка истории
+// загрузка истории
 function loadHistory() {
     const savedHistory = localStorage.getItem('history')
     if (savedHistory) {
@@ -73,8 +73,9 @@ function loadHistory() {
     }
 }
 
-// Очистка истории
+// очистка истории
 const clearBtn = document.querySelector('#clear-btn')
+// проверяем, существует ли кнопка на странице
 if (clearBtn) {
     clearBtn.addEventListener('click', () => {
         historyList.innerHTML = ''
@@ -83,16 +84,16 @@ if (clearBtn) {
     });
 }
 
-// Вешаем конвертацию на кнопку
+// вешаем конвертацию на кнопку
 btn.addEventListener('click', convertCurrency)
 
-// Enter на поле ввода
+// при нажатии на энтер будет происходить конвертация
 sumInput.addEventListener('keypress', function (event) {
     if (event.key === 'Enter') {
         btn.click()
     }
 });
 
-// Загружаем курсы и историю при старте
+// загружаем курсы и историю при старте
 loadRates()
 loadHistory()

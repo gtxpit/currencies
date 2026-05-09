@@ -3,33 +3,35 @@
 
 <head>
   <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <title>Конвертер валют</title>
   <link rel="stylesheet" href="/src/style.css">
   <script type="module" src="/src/main.js"></script>
-  <link rel="icon" type="image/png" href="/17143960.png">
+  <!-- иконка которая на вкладке браузера -->
+  <link rel="icon" type="image/png" href="/17143960.png">  
 
 
 </head>
-
-
 <body>
   <div class="container">
     <div class="header">
       <h1>Конвертер валют</h1>
+      <!-- время обновления валют -->
       <div class="update">
         Курсы обновлены: <span id="last-updated">📅date📅</span>
       </div>
     </div>
+    <!-- секция с основным контентом -->
     <div class="first">
-    </div>
-    <div class="first">
+      <!-- инпут куда вводить сумму -->
       <div class="summa">
-        <span>💵Сумма:</span>
+        <span>Сумма:</span>
         <input type="" class="sum" , placeholder="Введите сумму">
       </div>
+      <!-- блок с двумя инпутами -->
       <div class="card">
         <div class="currency-row">
+          <!-- первый инпут чтоб выбрать валюту -->
           <div class="currency-box">
             <h2>Из валюты:</h2>
             <select>
@@ -40,6 +42,7 @@
               <option value="UAH">Гривны</option>
             </select>
           </div>
+          <!-- второй инпут чтоб выбрать валюту -->
           <div class="currency-box">
             <h2>В валюту:</h2>
             <select>
@@ -53,20 +56,21 @@
         </div>
       </div>
       <button id="convert-btn">🔄 Конвертировать</button>
-
+      <!-- результат вычисления -->
       <div class="result">
         <span>Результат:</span>
         <p class="res">Введите сумму</p>
       </div>
 
       <div class="black-line"></div>
-
+      <!-- блок с историей -->
       <div class="history">
         <h3>История Операций</h3>
         <div class="history_list">
         </div>
       </div>
     </div>
+    <!-- очистка истории -->
     <div class="clearButton">
       <button id="clear-btn">Очистить историю</button>
     </div>
