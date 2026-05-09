@@ -1,10 +1,6 @@
-<div align="center">
-  <img src="image.png" alt="конвертер" width="400">
-</div>
-
 # Конвертер валют
-
-Конвертер с курсами от ЦБ РФ. Поддерживает 5 валют: RUB, USD, EUR, KZT, UAH.
+![alt text](image.png)
+# Конвертер с курсами от ЦБ РФ. Поддерживает 5 валют: RUB, USD, EUR, KZT, UAH.
 
 ## Возможности
 
@@ -15,10 +11,8 @@
 - Адаптив (телефоны)
 - Enter на поле ввода
 
-## 🌐 Деплой
+Деплой
+https://gtxpit.github.io/currencies
 
-[https://gtxpit.github.io/currencies](https://gtxpit.github.io/currencies)
-
-## 🛠️ Технологии
-
+Технологии
 HTML / CSS / JS / Vite / Fetch API / localStorage
