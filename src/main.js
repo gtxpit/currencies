@@ -1,13 +1,13 @@
 // сохраняю элементы в переменные
-const btn = document.querySelector('#convert-btn');
-const sumInput = document.querySelector('.sum');
-const historyList = document.querySelector('.history_list');
-const resultDiv = document.querySelector('.res');
-const updateSpan = document.getElementById('last-updated');
-const divUpdate = document.querySelector('.update');
+const btn = document.querySelector('#convert-btn')
+const sumInput = document.querySelector('.sum')
+const historyList = document.querySelector('.history_list')
+const resultDiv = document.querySelector('.res')
+const updateSpan = document.getElementById('last-updated')
+const divUpdate = document.querySelector('.update')
 
 // переменная для курсов
-let currencyRates = {};
+let currencyRates = {}
 
 // загрузка курсов 
 function loadRates() {
@@ -22,7 +22,7 @@ function loadRates() {
                 UAH: data.Valute.UAH.Value / data.Valute.UAH.Nominal
             };
 
-            const ratesDate = new Date(data.Timestamp);
+            const ratesDate = new Date(data.Timestamp)
             updateSpan.innerHTML = `🗓 Курс на дату: ${data.Date.split('T')[0]}<br>
                                     ⏱ Официальный курс ЦБ РФ от: ${ratesDate.toLocaleString()}`
 
@@ -31,7 +31,7 @@ function loadRates() {
         .catch(error => {
             console.error('Ошибка:', error)
             alert('Не удалось загрузить курсы')
-        });
+        })
 }
 
 // функция конвертации 
