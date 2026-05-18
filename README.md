@@ -17,7 +17,7 @@
 
 1. **Клонируйте репозиторий:**
    ```bash
-   git clone https://github.com
+   git clone git@github.com:gtxpit/currencies.git
    ```
 2. **Перейдите в папку проекта:**
    ```bash
